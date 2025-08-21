@@ -11,10 +11,10 @@ class Paddle(t.Turtle):
         self.setheading(90)
 
     def go_up(self):
-        self.goto(self.xcor(), self.ycor() +20)
+        self.forward(20)
 
     def go_down(self):
-        self.goto(self.xcor(), self.ycor()-20)
+        self.backward(20)
 
 
 

@@ -3,6 +3,7 @@ from scoreboard import GameScoreboard
 from ball import Ball
 import gui
 from gui import *
+import time
 
 #Screen Setup
 sc = t.Screen()
@@ -27,31 +28,27 @@ sc.onkey(p2.go_down, "s")
 
 game = True
 while game:
+    time.sleep(ball.sp)
     sc.update()
+    ball.move()
 
     if ball.xcor()>380 or ball.xcor()<-380:
         ball.bouncex()
         if ball.xcor() > 380:
             score.scorel += 1
-        if ball.xcor() < -380:
+        else:
             score.scorer += 1
         score.update()
         ball.goto(0,0)
+        ball.sp = 0.02
 
 
     if ball.ycor() >= 280 or ball.ycor() <= -280:
         ball.bouncey()
 
-    if ball.distance(p1)<50 and ball.xcor()>340:
+    if ball.distance(p1)<50 and ball.xcor()>340 or ball.distance(p2)<50 and ball.xcor()<-340:
         ball.bouncex()
 
-    if ball.distance(p2)<50 and ball.xcor()<-340:
-        ball.bouncex()
-
-
-    sc.tracer(1)
-    ball.move_it()
-    sc.tracer(0)
 
 
 

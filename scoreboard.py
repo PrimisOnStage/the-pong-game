@@ -8,7 +8,6 @@ class GameScoreboard(t.Turtle):
         self.color('white')
         self.scorer = 0
         self.scorel = 0
-
         self.update()
 
     def update(self):
